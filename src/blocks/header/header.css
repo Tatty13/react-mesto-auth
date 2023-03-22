@@ -1,5 +1,7 @@
 .header {
   margin: 45px 0 40px;
+  display: flex;
+  justify-content: space-between;
   min-height: 73px;
   border-bottom: 1px solid rgba(84, 84, 84, .7);
 }
