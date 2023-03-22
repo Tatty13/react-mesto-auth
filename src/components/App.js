@@ -162,7 +162,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <>
         <div className="page__wrap">
-          <Header />
+          <Header isloggedIn={isloggedIn} />
 
           <Routes>
             <Route path="/sign-up" element={<Register />} />
