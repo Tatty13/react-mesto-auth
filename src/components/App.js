@@ -1,8 +1,12 @@
 import { useEffect, useState, useCallback, useMemo } from "react";
+import { Routes, Route } from "react-router-dom";
 import CurrentUserContext from "../contexts/CurrentUserContext";
+import ProtectedRoute from "./ProtectedRoute";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
+import Login from "./Login";
+import Register from "./Register";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
@@ -23,6 +27,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({ name: "", about: "" });
   const [cards, setCards] = useState([]);
   const [isLoading, setLoading] = useState(false);
+  const [isloggedIn, setIsLoggedIn] = useState(false);
 
   /* -------------------------------------------- */
   const popupsState = useMemo(
@@ -158,15 +163,29 @@ function App() {
       <>
         <div className="page__wrap">
           <Header />
-          <Main
-            cards={cards}
-            onEditAvatar={handleEditAvatarClick}
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            onCardClick={handleCardClick}
-            onCardLike={handleCardLike}
-            onDeleteBtnClick={handleDeleteCardPopupOpen}
-          />
+
+          <Routes>
+            <Route path="/sign-up" element={<Register />} />
+            <Route path="/sign-in" element={<Login />} />
+            <Route
+              exact
+              path="/"
+              element={
+                <ProtectedRoute
+                  component={Main}
+                  isloggedIn={isloggedIn}
+                  cards={cards}
+                  onEditAvatar={handleEditAvatarClick}
+                  onEditProfile={handleEditProfileClick}
+                  onAddPlace={handleAddPlaceClick}
+                  onCardClick={handleCardClick}
+                  onCardLike={handleCardLike}
+                  onDeleteBtnClick={handleDeleteCardPopupOpen}
+                />
+              }
+            />
+          </Routes>
+
           <Footer />
         </div>
 
