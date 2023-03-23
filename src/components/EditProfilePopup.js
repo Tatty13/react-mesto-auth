@@ -7,7 +7,11 @@ import CurrentUserContext from "../contexts/CurrentUserContext";
 function EditProfilePopup({ isOpen, isLoading, onClose, onUpdateUser }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const [userData, setUserData, handleInputChange] = useInput({
+  const {
+    values: userData,
+    setValues: setUserData,
+    handleInputChange,
+  } = useInput({
     name: currentUser.name,
     about: currentUser.about,
   });

@@ -4,7 +4,11 @@ import useValidation from "../hooks/useValidation";
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup({ isOpen, isLoading, onClose, onAddPlace }) {
-  const [cardData, setCardData, handleInputChange] = useInput({
+  const {
+    values: cardData,
+    setValues: setCardData,
+    handleInputChange,
+  } = useInput({
     name: "",
     link: "",
   });
