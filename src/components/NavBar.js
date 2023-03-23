@@ -1,9 +1,6 @@
-import { useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import CurrentUserContext from "../contexts/CurrentUserContext";
 
-function NavBar({ isloggedIn }) {
-  const currentUser = useContext(CurrentUserContext);
+function NavBar({ isloggedIn, email, onSignput }) {
   const path = useLocation().pathname;
 
   const navElement =
@@ -12,11 +9,11 @@ function NavBar({ isloggedIn }) {
         Регистрация
       </NavLink>
     ) : path === "/sign-up" ? (
-      <NavLink to="/sign-up" className="nav__link">
+      <NavLink to="/sign-in" className="nav__link">
         Войти
       </NavLink>
     ) : (
-      <button className="nav__btn" type="button">
+      <button className="nav__btn" type="button" onClick={onSignput}>
         Выйти
       </button>
     );
@@ -26,7 +23,7 @@ function NavBar({ isloggedIn }) {
       <ul className="nav__list">
         {isloggedIn && (
           <li>
-            <span>{currentUser.email}</span>
+            <span>{email}</span>
           </li>
         )}
         <li>{navElement}</li>
