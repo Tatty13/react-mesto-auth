@@ -1,19 +1,20 @@
 import { useState } from "react";
-import Form from "./Form";
+import { useNavigate } from "react-router-dom";
 import SectionWithForm from "./SectionWithForm";
 import useInput from "../hooks/useInput";
 import useValidation from "../hooks/useValidation";
+import { authApi } from "../utils/api";
 
-function Login() {
-  const [isLoading, setIsLoading] = useState(false);
+function Login({ onLogin, onError }) {
+  const [isLoading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const [loginData, setLoginData, handleInputChange] = useInput({
+  const { values: loginData, handleInputChange } = useInput({
     email: "",
     password: "",
   });
 
-  const { errorMessages, isFormValid, handleValidityChange, resetValidation } =
-    useValidation(2);
+  const { errorMessages, isFormValid, handleValidityChange } = useValidation(2);
 
   const handleChange = e => {
     handleInputChange(e);
@@ -22,6 +23,17 @@ function Login() {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setLoading(true);
+
+    authApi
+      .login(loginData)
+      .then(({ token }) => {
+        localStorage.setItem("jwt", token);
+        onLogin(loginData.email);
+        navigate("/", { replace: true });
+      })
+      .catch(onError)
+      .finally(() => setLoading(false));
   };
 
   return (

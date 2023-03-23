@@ -2,17 +2,17 @@ import { useState } from "react";
 import SectionWithForm from "./SectionWithForm";
 import useInput from "../hooks/useInput";
 import useValidation from "../hooks/useValidation";
+import { authApi } from "../utils/api";
 
-function Register() {
-  const [isLoading, setIsLoading] = useState(false);
+function Register({ onSignup, onError }) {
+  const [isLoading, setLoading] = useState(false);
 
-  const [singupData, setSingupData, handleInputChange] = useInput({
+  const { values: singupData, handleInputChange } = useInput({
     email: "",
     password: "",
   });
 
-  const { errorMessages, isFormValid, handleValidityChange, resetValidation } =
-    useValidation(2);
+  const { errorMessages, isFormValid, handleValidityChange } = useValidation(2);
 
   const handleChange = e => {
     handleInputChange(e);
@@ -21,6 +21,15 @@ function Register() {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setLoading(true);
+
+    authApi
+      .singup(singupData)
+      .then(_ => {
+        onSignup();
+      })
+      .catch(onError)
+      .finally(() => setLoading(false));
   };
 
   return (
