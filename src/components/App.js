@@ -12,7 +12,7 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
 import ImagePopup from "./ImagePopup";
-import ErrorPopup from "./ErrorPopup";
+import InfoTooltip from "./InfoTooltip";
 import api from "../utils/api";
 
 function App() {
@@ -224,8 +224,18 @@ function App() {
           onClose={closeAllPopups}
         />
 
-        <ErrorPopup
-          error={errorText}
+        <InfoTooltip
+          content="error"
+          moreInfo={errorText}
+          title="Что-то пошло не так!
+          Попробуйте ещё раз."
+          isOpen={isErrorPopupOpen}
+          onClose={closeAllPopups}
+        />
+
+        <InfoTooltip
+          content="success"
+          title="Вы успешно зарегистрировались!"
           isOpen={isErrorPopupOpen}
           onClose={closeAllPopups}
         />
