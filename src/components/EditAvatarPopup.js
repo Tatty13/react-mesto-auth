@@ -28,23 +28,19 @@ function EditAvatarPopup({ isOpen, isLoading, onClose, onUpdateAvatar }) {
       onClose={onClose}
       onSubmit={onSubmit}
       title="Обновить аватар"
-      name="edit-avatar">
+      name="edit-avatar"
+      theme="light">
       <label>
         <input
           ref={avatarRef}
-          className="form__input"
+          className="form__input form__input_theme_light"
           type="url"
           name="avatar"
           placeholder="Ссылка на картинку"
           onChange={handleValidityChange}
           required
         />
-        <span
-          className={`form__input-error name-input-error ${
-            errorMessages.avatar ? "form__input-error_active" : ""
-          }`}>
-          {errorMessages.avatar}
-        </span>
+        <span className="form__input-error">{errorMessages.avatar}</span>
       </label>
     </PopupWithForm>
   );

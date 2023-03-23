@@ -38,10 +38,11 @@ function AddPlacePopup({ isOpen, isLoading, onClose, onAddPlace }) {
       onSubmit={handleSubmit}
       title="Новое место"
       name="add-card"
-      submitBtnText="Создать">
+      submitBtnText="Создать"
+      theme="light">
       <label>
         <input
-          className="form__input"
+          className="form__input form__input_theme_light"
           type="text"
           name="name"
           placeholder="Название"
@@ -51,16 +52,11 @@ function AddPlacePopup({ isOpen, isLoading, onClose, onAddPlace }) {
           onChange={handleChange}
           required
         />
-        <span
-          className={`form__input-error name-input-error ${
-            errorMessages.name ? "form__input-error_active" : ""
-          }`}>
-          {errorMessages.name}
-        </span>
+        <span className="form__input-error">{errorMessages.name}</span>
       </label>
       <label>
         <input
-          className="form__input"
+          className="form__input form__input_theme_light"
           type="url"
           name="link"
           placeholder="Ссылка на картинку"
@@ -68,12 +64,7 @@ function AddPlacePopup({ isOpen, isLoading, onClose, onAddPlace }) {
           onChange={handleChange}
           required
         />
-        <span
-          className={`form__input-error name-input-error ${
-            errorMessages.link ? "form__input-error_active" : ""
-          }`}>
-          {errorMessages.link}
-        </span>
+        <span className="form__input-error">{errorMessages.link}</span>
       </label>
     </PopupWithForm>
   );

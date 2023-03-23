@@ -40,10 +40,11 @@ function EditProfilePopup({ isOpen, isLoading, onClose, onUpdateUser }) {
       onClose={onClose}
       onSubmit={handleSubmit}
       title="Редактировать профиль"
-      name="edit-profile">
+      name="edit-profile"
+      theme="light">
       <label>
         <input
-          className="form__input"
+          className="form__input form__input_theme_light"
           type="text"
           name="name"
           placeholder="Введите имя"
@@ -53,16 +54,11 @@ function EditProfilePopup({ isOpen, isLoading, onClose, onUpdateUser }) {
           onChange={handleChange}
           required
         />
-        <span
-          className={`form__input-error name-input-error ${
-            errorMessages.name ? "form__input-error_active" : ""
-          }`}>
-          {errorMessages.name}
-        </span>
+        <span className="form__input-error">{errorMessages.name}</span>
       </label>
       <label>
         <input
-          className="form__input"
+          className="form__input form__input_theme_light"
           type="text"
           name="about"
           minLength="2"
@@ -72,12 +68,7 @@ function EditProfilePopup({ isOpen, isLoading, onClose, onUpdateUser }) {
           onChange={handleChange}
           required
         />
-        <span
-          className={`form__input-error name-input-error ${
-            errorMessages.about ? "form__input-error_active" : ""
-          }`}>
-          {errorMessages.about}
-        </span>
+        <span className="form__input-error">{errorMessages.about}</span>
       </label>
     </PopupWithForm>
   );
