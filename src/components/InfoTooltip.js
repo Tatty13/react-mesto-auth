@@ -7,7 +7,7 @@ function InfoTooltip({ moreInfo, isOpen, onClose, content, title }) {
       isOpen={isOpen}
       onClose={onClose}
       containerClass={`popup__container popup__container_content_notification popup__container_content_${content}`}>
-      <h2 className="popup__title">{title}</h2>
+      <h2 className="popup__title popup__title_place_notification">{title}</h2>
       <p className="popup__subtitle">{moreInfo}</p>
     </Popup>
   );
