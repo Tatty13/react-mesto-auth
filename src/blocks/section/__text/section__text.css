@@ -3,3 +3,9 @@
   font-size: 14px;
   line-height: 1.21;
 }
+
+@media screen and (max-width: 698px) {
+  .section__text {
+    margin-top: 20px;
+  }
+}
