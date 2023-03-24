@@ -64,6 +64,7 @@
 @import url(./blocks/form/__input/form__input.css);
 @import url(./blocks/form/__input/_theme/form__input_theme_dark.css);
 @import url(./blocks/form/__input/_theme/form__input_theme_light.css);
+@import url(./blocks/form/__input/_invalid/form__input_invalid.css);
 @import url(./blocks/form/__input-error/form__input-error.css);
 @import url(./blocks/form/__submit-btn/form__submit-btn.css);
 @import url(./blocks/form/__submit-btn/_theme/form__submit-btn_theme_dark.css);

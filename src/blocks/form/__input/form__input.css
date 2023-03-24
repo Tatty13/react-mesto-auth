@@ -11,7 +11,3 @@
   outline: none;
   transition: .3s;
 }
-
-.form__input:invalid {
-  border-color: #f00;
-}

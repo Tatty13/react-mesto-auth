@@ -14,7 +14,8 @@ function Login({ onLogin, onError }) {
     password: "",
   });
 
-  const { errorMessages, isFormValid, handleValidityChange } = useValidation(2);
+  const { errorMessages, isFormValid, isInputsValid, handleValidityChange } =
+    useValidation(2);
 
   const handleChange = e => {
     handleInputChange(e);
@@ -46,7 +47,9 @@ function Login({ onLogin, onError }) {
       submitBtnText="Войти">
       <label>
         <input
-          className="form__input form__input_theme_dark"
+          className={`form__input form__input_theme_dark ${
+            isInputsValid.email === false && "form__input_invalid"
+          }`}
           type="email"
           name="email"
           placeholder="Email"
@@ -58,7 +61,9 @@ function Login({ onLogin, onError }) {
       </label>
       <label>
         <input
-          className="form__input form__input_theme_dark"
+          className={`form__input form__input_theme_dark ${
+            isInputsValid.password === false && "form__input_invalid"
+          }`}
           type="password"
           name="password"
           placeholder="Пароль"

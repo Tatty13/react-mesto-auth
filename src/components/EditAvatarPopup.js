@@ -5,8 +5,13 @@ import PopupWithForm from "./PopupWithForm";
 function EditAvatarPopup({ isOpen, isLoading, onClose, onUpdateAvatar }) {
   const avatarRef = useRef();
 
-  const { errorMessages, isFormValid, handleValidityChange, resetValidation } =
-    useValidation(1);
+  const {
+    errorMessages,
+    isFormValid,
+    isInputsValid,
+    handleValidityChange,
+    resetValidation,
+  } = useValidation(1);
 
   useEffect(() => {
     if (isOpen) {
@@ -33,7 +38,9 @@ function EditAvatarPopup({ isOpen, isLoading, onClose, onUpdateAvatar }) {
       <label>
         <input
           ref={avatarRef}
-          className="form__input form__input_theme_light"
+          className={`form__input form__input_theme_light ${
+            isInputsValid.avatar === false && "form__input_invalid"
+          }`}
           type="url"
           name="avatar"
           placeholder="Ссылка на картинку"

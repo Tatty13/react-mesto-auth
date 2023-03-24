@@ -13,8 +13,13 @@ function AddPlacePopup({ isOpen, isLoading, onClose, onAddPlace }) {
     link: "",
   });
 
-  const { errorMessages, isFormValid, handleValidityChange, resetValidation } =
-    useValidation(2);
+  const {
+    errorMessages,
+    isFormValid,
+    isInputsValid,
+    handleValidityChange,
+    resetValidation,
+  } = useValidation(2);
 
   useEffect(() => {
     if (isOpen) {
@@ -46,7 +51,9 @@ function AddPlacePopup({ isOpen, isLoading, onClose, onAddPlace }) {
       theme="light">
       <label>
         <input
-          className="form__input form__input_theme_light"
+          className={`form__input form__input_theme_light ${
+            isInputsValid.name === false && "form__input_invalid"
+          }`}
           type="text"
           name="name"
           placeholder="Название"
@@ -60,7 +67,9 @@ function AddPlacePopup({ isOpen, isLoading, onClose, onAddPlace }) {
       </label>
       <label>
         <input
-          className="form__input form__input_theme_light"
+          className={`form__input form__input_theme_light ${
+            isInputsValid.link === false && "form__input_invalid"
+          }`}
           type="url"
           name="link"
           placeholder="Ссылка на картинку"

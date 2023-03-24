@@ -16,8 +16,13 @@ function EditProfilePopup({ isOpen, isLoading, onClose, onUpdateUser }) {
     about: currentUser.about,
   });
 
-  const { errorMessages, isFormValid, handleValidityChange, resetValidation } =
-    useValidation(1);
+  const {
+    errorMessages,
+    isFormValid,
+    isInputsValid,
+    handleValidityChange,
+    resetValidation,
+  } = useValidation(1);
 
   const handleChange = e => {
     handleInputChange(e);
@@ -48,7 +53,9 @@ function EditProfilePopup({ isOpen, isLoading, onClose, onUpdateUser }) {
       theme="light">
       <label>
         <input
-          className="form__input form__input_theme_light"
+          className={`form__input form__input_theme_light ${
+            isInputsValid.name === false && "form__input_invalid"
+          }`}
           type="text"
           name="name"
           placeholder="Введите имя"
@@ -62,7 +69,9 @@ function EditProfilePopup({ isOpen, isLoading, onClose, onUpdateUser }) {
       </label>
       <label>
         <input
-          className="form__input form__input_theme_light"
+          className={`form__input form__input_theme_light ${
+            isInputsValid.about === false && "form__input_invalid"
+          }`}
           type="text"
           name="about"
           minLength="2"
