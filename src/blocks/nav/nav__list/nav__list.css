@@ -9,12 +9,6 @@
   transition: margin .3s;
 }
 
-@media screen and (max-width: 968px) {
-  .nav__list {
-    margin-right: 27px;
-  }
-}
-
 @media screen and (max-width: 468px) {
   .nav__list {
     font-size: 14px;
