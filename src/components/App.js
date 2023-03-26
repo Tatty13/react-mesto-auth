@@ -195,13 +195,13 @@ function App() {
 
   useEffect(() => {
     handleTokenCheck();
-    Promise.all([api.getUserData(), api.getInitialCards()])
+    isloggedIn && Promise.all([api.getUserData(), api.getInitialCards()])
       .then(([user, cardsData]) => {
         setCurrentUser(user);
         setCards([...cardsData]);
       })
       .catch(handleErrorCatch);
-  }, [handleErrorCatch, handleTokenCheck]);
+  }, [handleErrorCatch, handleTokenCheck, isloggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
