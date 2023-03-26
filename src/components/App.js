@@ -32,7 +32,7 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
 
   const [isLoading, setLoading] = useState(false);
-  const [isloggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
 
@@ -195,20 +195,20 @@ function App() {
 
   useEffect(() => {
     handleTokenCheck();
-    isloggedIn && Promise.all([api.getUserData(), api.getInitialCards()])
+    isLoggedIn && Promise.all([api.getUserData(), api.getInitialCards()])
       .then(([user, cardsData]) => {
         setCurrentUser(user);
         setCards([...cardsData]);
       })
       .catch(handleErrorCatch);
-  }, [handleErrorCatch, handleTokenCheck, isloggedIn]);
+  }, [handleErrorCatch, handleTokenCheck, isLoggedIn]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <>
         <div className="page__wrap">
           <Header
-            isloggedIn={isloggedIn}
+            isLoggedIn={isLoggedIn}
             email={userEmail}
             onSignout={handleSignout}
           />
@@ -232,7 +232,7 @@ function App() {
               element={
                 <ProtectedRoute
                   component={Main}
-                  isloggedIn={isloggedIn}
+                  isLoggedIn={isLoggedIn}
                   cards={cards}
                   onEditAvatar={handleEditAvatarClick}
                   onEditProfile={handleEditProfileClick}

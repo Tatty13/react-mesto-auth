@@ -1,6 +1,6 @@
 import { NavLink, useLocation } from "react-router-dom";
 
-function NavBar({ isloggedIn, isOpen, email, onSignout }) {
+function NavBar({ isLoggedIn, isOpen, email, onSignout }) {
   const path = useLocation().pathname;
 
   const navElement =
@@ -19,9 +19,9 @@ function NavBar({ isloggedIn, isOpen, email, onSignout }) {
     );
 
   return (
-    <nav className={`${isloggedIn && "nav"} ${isOpen && "nav_open"}`}>
-      <ul className={`nav__list ${isloggedIn && "nav__list_place_burger"}`}>
-        {isloggedIn && (
+    <nav className={`${isLoggedIn && "nav"} ${isOpen && "nav_open"}`}>
+      <ul className={`nav__list ${isLoggedIn && "nav__list_place_burger"}`}>
+        {isLoggedIn && (
           <li>
             <span>{email}</span>
           </li>

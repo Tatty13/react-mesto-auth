@@ -2,7 +2,7 @@ import { useState } from "react";
 import NavBar from "./NavBar";
 import BurgerBtn from "./BurgerBtn";
 
-function Header({ isloggedIn, email, onSignout }) {
+function Header({ isLoggedIn, email, onSignout }) {
   const [isNavBarOpen, setNavBarState] = useState(false);
 
   function handleOpenBurgerMenu() {
@@ -20,13 +20,13 @@ function Header({ isloggedIn, email, onSignout }) {
         {" "}
       </a>
       <NavBar
-        isloggedIn={isloggedIn}
+        isLoggedIn={isLoggedIn}
         isOpen={isNavBarOpen}
         email={email}
         onSignout={handleSignout}
       />
 
-      {isloggedIn && (
+      {isLoggedIn && (
       <BurgerBtn onClick={handleOpenBurgerMenu} isOpen={isNavBarOpen} />
       )}
     </header>
