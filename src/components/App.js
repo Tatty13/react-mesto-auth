@@ -210,7 +210,7 @@ function App() {
           <Header
             isloggedIn={isloggedIn}
             email={userEmail}
-            onSignput={handleSignout}
+            onSignout={handleSignout}
           />
 
           <Routes>
