@@ -63,6 +63,7 @@ function Register({ onSignup, onError }) {
           type="password"
           name="password"
           placeholder="Пароль"
+          minLength="6"
           value={singupData.password}
           onChange={handleChange}
           required
