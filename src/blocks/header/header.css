@@ -4,6 +4,13 @@
   justify-content: space-between;
   min-height: 73px;
   border-bottom: 1px solid rgba(84, 84, 84, .7);
+  transition: .3s;
+}
+
+@media screen and (max-width: 968px) {
+  .header {
+    padding: 0 30px;
+  }
 }
 
 @media screen and (max-width: 468px) {
@@ -11,5 +18,9 @@
     margin-top: 28px;
     margin-bottom: 42px;
     min-height: 56px;
+  }
+
+  .header:has(.nav_open) {
+    padding-top: 142px;
   }
 }
