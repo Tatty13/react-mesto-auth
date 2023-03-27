@@ -70,9 +70,19 @@ function App() {
     setIsInfoTooltipOpen(true);
   }, []);
 
-  function handleLogin(email) {
-    setIsLoggedIn(true);
-    setUserEmail(email);
+  function handleLogin(loginData) {
+    setLoading(true);
+
+    authApi
+      .login(loginData)
+      .then(({ token }) => {
+        localStorage.setItem("jwt", token);
+        setIsLoggedIn(true);
+        setUserEmail(loginData.email);
+        navigate("/", { replace: true });
+      })
+      .catch(handleErrorCatch)
+      .finally(() => setLoading(false));
   }
 
   function handlseSignup() {
@@ -219,9 +229,7 @@ function App() {
             />
             <Route
               path="/sign-in"
-              element={
-                <Login onLogin={handleLogin} onError={handleErrorCatch} />
-              }
+              element={<Login onLogin={handleLogin} isLoading={isLoading} />}
             />
             <Route
               exact
