@@ -85,10 +85,18 @@ function App() {
       .finally(() => setLoading(false));
   }
 
-  function handlseSignup() {
-    setIsSuccess(true);
-    setErrorText("");
-    setIsInfoTooltipOpen(true);
+  function handlseSignup(singupData) {
+    setLoading(true);
+
+    authApi
+      .singup(singupData)
+      .then(_ => {
+        setIsSuccess(true);
+        setErrorText("");
+        setIsInfoTooltipOpen(true);
+      })
+      .catch(handleErrorCatch)
+      .finally(() => setLoading(false));
   }
 
   function handleSignout() {
@@ -224,7 +232,7 @@ function App() {
             <Route
               path="/sign-up"
               element={
-                <Register onSignup={handlseSignup} onError={handleErrorCatch} />
+                <Register onSignup={handlseSignup} isLoading={isLoading} />
               }
             />
             <Route

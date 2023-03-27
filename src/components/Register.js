@@ -1,12 +1,8 @@
-import { useState } from "react";
 import SectionWithForm from "./SectionWithForm";
 import useInput from "../hooks/useInput";
 import useValidation from "../hooks/useValidation";
-import { authApi } from "../utils/api";
 
-function Register({ onSignup, onError }) {
-  const [isLoading, setLoading] = useState(false);
-
+function Register({ onSignup, isLoading }) {
   const { values: singupData, handleInputChange } = useInput({
     email: "",
     password: "",
@@ -22,15 +18,7 @@ function Register({ onSignup, onError }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setLoading(true);
-
-    authApi
-      .singup(singupData)
-      .then(_ => {
-        onSignup();
-      })
-      .catch(onError)
-      .finally(() => setLoading(false));
+    onSignup(singupData);
   };
 
   return (
