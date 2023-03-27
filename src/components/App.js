@@ -21,7 +21,8 @@ function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupState] = useState(false);
   const [isImagePopupOpen, setImagePopupState] = useState(false);
   const [isDeleteCardPopupOpen, setDeleteCardPopupState] = useState(false);
-  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [isInfoTooltipOpen, setInfoTooltipState] = useState(false);
+
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorText, setErrorText] = useState("");
 
@@ -56,7 +57,7 @@ function App() {
 
   const closeAllPopups = useCallback(() => {
     if (isInfoTooltipOpen) {
-      setIsInfoTooltipOpen(false);
+      setInfoTooltipState(false);
     } else {
       popupsState.forEach(popup => popup.state && popup.setter(false));
     }
@@ -67,7 +68,7 @@ function App() {
   const handleErrorCatch = useCallback(errorText => {
     setIsSuccess(false);
     setErrorText(errorText);
-    setIsInfoTooltipOpen(true);
+    setInfoTooltipState(true);
   }, []);
 
   function handleLogin(loginData) {
@@ -93,7 +94,7 @@ function App() {
       .then(_ => {
         setIsSuccess(true);
         setErrorText("");
-        setIsInfoTooltipOpen(true);
+        setInfoTooltipState(true);
       })
       .catch(handleErrorCatch)
       .finally(() => setLoading(false));
