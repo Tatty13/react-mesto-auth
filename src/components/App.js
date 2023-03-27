@@ -21,8 +21,8 @@ function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupState] = useState(false);
   const [isImagePopupOpen, setImagePopupState] = useState(false);
   const [isDeleteCardPopupOpen, setDeleteCardPopupState] = useState(false);
-  const [isErrorPopupOpen, setErrorPopupState] = useState(false);
-  const [isSuccessLoginPopupOpen, setSuccessLoginPopupState] = useState(false);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [errorText, setErrorText] = useState("");
 
   const [cards, setCards] = useState([]);
@@ -44,7 +44,6 @@ function App() {
       { state: isAddPlacePopupOpen, setter: setAddPlacePopupState },
       { state: isImagePopupOpen, setter: setImagePopupState },
       { state: isDeleteCardPopupOpen, setter: setDeleteCardPopupState },
-      { state: isSuccessLoginPopupOpen, setter: setSuccessLoginPopupState },
     ],
     [
       isEditAvatarPopupOpen,
@@ -52,23 +51,23 @@ function App() {
       isAddPlacePopupOpen,
       isImagePopupOpen,
       isDeleteCardPopupOpen,
-      isSuccessLoginPopupOpen,
     ]
   );
 
   const closeAllPopups = useCallback(() => {
-    if (isErrorPopupOpen) {
-      setErrorPopupState(false);
+    if (isInfoTooltipOpen) {
+      setIsInfoTooltipOpen(false);
     } else {
       popupsState.forEach(popup => popup.state && popup.setter(false));
     }
-  }, [popupsState, isErrorPopupOpen]);
+  }, [popupsState, isInfoTooltipOpen]);
 
   /* -------------------------------------------- */
 
   const handleErrorCatch = useCallback(errorText => {
-    setErrorPopupState(true);
+    setIsSuccess(false);
     setErrorText(errorText);
+    setIsInfoTooltipOpen(true);
   }, []);
 
   function handleLogin(email) {
@@ -77,12 +76,9 @@ function App() {
   }
 
   function handlseSignup() {
-    setSuccessLoginPopupState(true);
-  }
-
-  function handleSuccessPopupClose() {
-    closeAllPopups();
-    navigate("/", { replace: true });
+    setIsSuccess(true);
+    setErrorText("");
+    setIsInfoTooltipOpen(true);
   }
 
   function handleSignout() {
@@ -195,12 +191,13 @@ function App() {
 
   useEffect(() => {
     handleTokenCheck();
-    isLoggedIn && Promise.all([api.getUserData(), api.getInitialCards()])
-      .then(([user, cardsData]) => {
-        setCurrentUser(user);
-        setCards([...cardsData]);
-      })
-      .catch(handleErrorCatch);
+    isLoggedIn &&
+      Promise.all([api.getUserData(), api.getInitialCards()])
+        .then(([user, cardsData]) => {
+          setCurrentUser(user);
+          setCards([...cardsData]);
+        })
+        .catch(handleErrorCatch);
   }, [handleErrorCatch, handleTokenCheck, isLoggedIn]);
 
   return (
@@ -284,20 +281,10 @@ function App() {
         />
 
         <InfoTooltip
-          content="error"
           moreInfo={errorText}
-          title="Что-то пошло не так!
-          Попробуйте ещё раз."
-          isOpen={isErrorPopupOpen}
-          onClose={closeAllPopups}
-        />
-
-        <InfoTooltip
-          content="success"
-          title="Вы успешно зарегистрировались!"
-          isOpen={isSuccessLoginPopupOpen}
-          onClose={handleSuccessPopupClose}
-        />
+          isOpen={isInfoTooltipOpen}
+          isSuccess={isSuccess}
+          onClose={closeAllPopups}></InfoTooltip>
       </>
     </CurrentUserContext.Provider>
   );
