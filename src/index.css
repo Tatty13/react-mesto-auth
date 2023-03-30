@@ -78,3 +78,6 @@
 @import url(./blocks/form/__submit-btn/_theme/form__submit-btn_theme_dark.css);
 @import url(./blocks/form/__submit-btn/_theme/form__submit-btn_theme_light.css);
 @import url(./blocks/form/__submit-btn/_disabled/form__submit-btn_disabled.css);
+
+@import url(./blocks/loader/loader.css);
+@import url(./blocks/loader/__spinner/loader__spinner.css);
