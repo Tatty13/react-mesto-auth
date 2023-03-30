@@ -82,12 +82,12 @@ function App() {
         localStorage.setItem("jwt", token);
         setIsLoggedIn(true);
         setUserEmail(loginData.email);
+        setPageLoading(true);
         navigate("/", { replace: true });
       })
       .catch(handleErrorCatch)
       .finally(() => {
         setLoading(false);
-        setPageLoading(true);
       });
   }
 
