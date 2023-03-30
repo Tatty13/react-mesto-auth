@@ -13,6 +13,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup";
 import ImagePopup from "./ImagePopup";
 import InfoTooltip from "./InfoTooltip";
+import Loader from "./Loader";
 import { api, authApi } from "../utils/api";
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
 
   const [isLoading, setLoading] = useState(false);
+  const [isPageLoading, setPageLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
@@ -83,7 +85,10 @@ function App() {
         navigate("/", { replace: true });
       })
       .catch(handleErrorCatch)
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+        setPageLoading(true);
+      });
   }
 
   function handlseSignup(singupData) {
@@ -205,6 +210,8 @@ function App() {
           navigate("/", { replace: true });
         })
         .catch(handleErrorCatch);
+    } else {
+      setPageLoading(false);
     }
   }, [handleErrorCatch, navigate]);
 
@@ -216,8 +223,13 @@ function App() {
           setCurrentUser(user);
           setCards([...cardsData]);
         })
-        .catch(handleErrorCatch);
+        .catch(handleErrorCatch)
+        .finally(() => setPageLoading(false));
   }, [handleErrorCatch, handleTokenCheck, isLoggedIn]);
+
+  if (isPageLoading) {
+    return <Loader />;
+  }
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -228,7 +240,6 @@ function App() {
             email={userEmail}
             onSignout={handleSignout}
           />
-
           <Routes>
             <Route
               path="/sign-up"
