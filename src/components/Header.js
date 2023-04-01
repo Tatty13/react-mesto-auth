@@ -5,7 +5,7 @@ import BurgerBtn from "./BurgerBtn";
 function Header({ isLoggedIn, email, onSignout }) {
   const [isNavBarOpen, setNavBarState] = useState(false);
 
-  function handleOpenBurgerMenu() {
+  function toggleBurgerMenu() {
     setNavBarState(!isNavBarOpen);
   }
 
@@ -27,7 +27,7 @@ function Header({ isLoggedIn, email, onSignout }) {
       />
 
       {isLoggedIn && (
-      <BurgerBtn onClick={handleOpenBurgerMenu} isOpen={isNavBarOpen} />
+        <BurgerBtn onClick={toggleBurgerMenu} isOpen={isNavBarOpen} />
       )}
     </header>
   );
