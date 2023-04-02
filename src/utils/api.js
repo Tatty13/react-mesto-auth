@@ -21,15 +21,14 @@ class Api {
     return res.ok
       ? res.json()
       : res
-          .text()
-          .then(error => {
-            const errObj = JSON.parse(error);
-            return Promise.reject(
+          .json()
+          .then(error =>
+            Promise.reject(
               `${this._errorMessages[errorPlace]}. Ошибка: ${res.status} ${
-                errObj.error || errObj.message || ''
+                error.error || error.message || ""
               }`
             )
-          });
+          );
   }
 
   /**
