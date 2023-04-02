@@ -73,6 +73,11 @@ function App() {
     setInfoTooltipState(true);
   }, []);
 
+  /**
+   * @param {object} loginData
+   * @param {string} loginData.email
+   * @param {string} loginData.password
+   */
   function handleLogin(loginData) {
     setLoading(true);
 
@@ -91,6 +96,11 @@ function App() {
       });
   }
 
+  /**
+   * @param {object} singupData
+   * @param {string} singupData.email
+   * @param {string} singupData.password
+   */
   function handlseSignup(singupData) {
     setLoading(true);
 
@@ -131,6 +141,9 @@ function App() {
     setImagePopupState(true);
   }
 
+  /**
+   * @param {object} card - object with full card data
+   */
   function handleCardLike(card) {
     const isLiked = card.likes.some(user => user._id === currentUser._id);
 
@@ -144,11 +157,17 @@ function App() {
       .catch(handleErrorCatch);
   }
 
+  /**
+   * @param {string} cardId
+   */
   function handleDeleteCardPopupOpen(cardId) {
     setSelectedCard({ id: cardId });
     setDeleteCardPopupState(true);
   }
 
+  /**
+   * @param {string} cardId
+   */
   function handleCardDelete(cardId) {
     setLoading(true);
     api
@@ -161,6 +180,11 @@ function App() {
       .finally(() => setLoading(false));
   }
 
+  /**
+   * @param {object} userData
+   * @param {string} userData.name
+   * @param {string} userData.about
+   */
   function handleUpdateUser(userData) {
     setLoading(true);
 
@@ -174,6 +198,10 @@ function App() {
       .finally(() => setLoading(false));
   }
 
+  /**
+   * @param {object} avatarData
+   * @param {string} avatarData.avatar - avatar image link
+   */
   function handleUpdateAvatar(avatarData) {
     setLoading(true);
     api
@@ -186,6 +214,11 @@ function App() {
       .finally(() => setLoading(false));
   }
 
+  /**
+   * @param {object} cardData
+   * @param {string} cardData.name
+   * @param {string} cardData.link
+   */
   function handleAddPlaceSubmit(cardData) {
     setLoading(true);
     api
