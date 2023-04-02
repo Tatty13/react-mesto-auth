@@ -149,6 +149,12 @@ class Api {
     );
   }
 
+  /**
+   * @param {object} authData
+   * @param {string} authData.email
+   * @param {string} authData.password
+   * @returns
+   */
   singup(authData) {
     return this._request(
       "/signup",
@@ -163,6 +169,12 @@ class Api {
     );
   }
 
+  /**
+   * @param {object} loginData
+   * @param {string} loginData.email
+   * @param {string} loginData.password
+   * @returns
+   */
   login(loginData) {
     return this._request(
       "/signin",
@@ -177,6 +189,10 @@ class Api {
     );
   }
 
+  /**
+   * @param {string} token 
+   * @returns 
+   */
   validateToken(token) {
     return this._request(
       "/users/me",
