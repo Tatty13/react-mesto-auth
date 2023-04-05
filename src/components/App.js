@@ -14,6 +14,7 @@ import DeleteCardPopup from "./DeleteCardPopup";
 import ImagePopup from "./ImagePopup";
 import InfoTooltip from "./InfoTooltip";
 import Loader from "./Loader";
+import PageNotFound from "./PageNotFound";
 import { api, authApi } from "../utils/api";
 
 function App() {
@@ -301,6 +302,7 @@ function App() {
                 />
               }
             />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
 
           <Footer />
