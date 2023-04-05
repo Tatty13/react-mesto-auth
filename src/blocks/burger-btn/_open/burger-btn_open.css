@@ -5,5 +5,5 @@
 
 .burger-btn_open::after {
   transform: rotate(-45deg);
-  bottom: 9px;
+  bottom: 10px;
 }
