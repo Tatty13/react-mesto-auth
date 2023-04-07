@@ -11,7 +11,7 @@ function EditAvatarPopup({ isOpen, isLoading, onClose, onUpdateAvatar }) {
     isInputsValid,
     handleValidityChange,
     resetValidation,
-  } = useValidation(1);
+  } = useValidation();
 
   useEffect(() => {
     if (isOpen) {

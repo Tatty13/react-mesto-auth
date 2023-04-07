@@ -22,7 +22,7 @@ function EditProfilePopup({ isOpen, isLoading, onClose, onUpdateUser }) {
     isInputsValid,
     handleValidityChange,
     resetValidation,
-  } = useValidation(1);
+  } = useValidation();
 
   const handleChange = e => {
     handleInputChange(e);
