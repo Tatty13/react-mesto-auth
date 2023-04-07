@@ -274,37 +274,38 @@ function App() {
             email={userEmail}
             onSignout={handleSignout}
           />
-          <Routes>
-            <Route
-              path="/sign-up"
-              element={
-                <Register onSignup={handlseSignup} isLoading={isLoading} />
-              }
-            />
-            <Route
-              path="/sign-in"
-              element={<Login onLogin={handleLogin} isLoading={isLoading} />}
-            />
-            <Route
-              exact
-              path="/"
-              element={
-                <ProtectedRoute
-                  component={Main}
-                  isLoggedIn={isLoggedIn}
-                  cards={cards}
-                  onEditAvatar={handleEditAvatarClick}
-                  onEditProfile={handleEditProfileClick}
-                  onAddPlace={handleAddPlaceClick}
-                  onCardClick={handleCardClick}
-                  onCardLike={handleCardLike}
-                  onDeleteBtnClick={handleDeleteCardPopupOpen}
-                />
-              }
-            />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
-
+          <main className="content">
+            <Routes>
+              <Route
+                path="/sign-up"
+                element={
+                  <Register onSignup={handlseSignup} isLoading={isLoading} />
+                }
+              />
+              <Route
+                path="/sign-in"
+                element={<Login onLogin={handleLogin} isLoading={isLoading} />}
+              />
+              <Route
+                exact
+                path="/"
+                element={
+                  <ProtectedRoute
+                    component={Main}
+                    isLoggedIn={isLoggedIn}
+                    cards={cards}
+                    onEditAvatar={handleEditAvatarClick}
+                    onEditProfile={handleEditProfileClick}
+                    onAddPlace={handleAddPlaceClick}
+                    onCardClick={handleCardClick}
+                    onCardLike={handleCardLike}
+                    onDeleteBtnClick={handleDeleteCardPopupOpen}
+                  />
+                }
+              />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </main>
           <Footer />
         </div>
 

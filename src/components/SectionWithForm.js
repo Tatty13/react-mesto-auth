@@ -13,7 +13,7 @@ function SectionWithForm({
   children,
 }) {
   return (
-    <section className="content section">
+    <section className="section">
       <h2 className="section__title">{title}</h2>
       <Form
         name={name}
