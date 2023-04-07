@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
 
-function useValidation(requirednputsCount) {
+function useValidation() {
   const [errorMessages, setErrorMessages] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
   const [isInputsValid, setInputsValidity] = useState({});
@@ -15,18 +15,14 @@ function useValidation(requirednputsCount) {
       ...inputs,
       [e.target.name]: e.target.validity.valid,
     }));
-  };
 
-  useEffect(() => {
-    const errors = Object.values(errorMessages);
-    setIsFormValid(
-      errors.length >= requirednputsCount && errors.every(error => error === "")
-    );
-  }, [errorMessages, requirednputsCount]);
+    setIsFormValid(e.target.closest('.form').checkValidity());
+  };
 
   const resetValidation = useCallback(() => {
     setErrorMessages({});
     setInputsValidity({});
+    setIsFormValid(false);
   }, []);
 
   return {

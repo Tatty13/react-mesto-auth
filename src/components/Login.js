@@ -9,7 +9,7 @@ function Login({ onLogin, isLoading }) {
   });
 
   const { errorMessages, isFormValid, isInputsValid, handleValidityChange } =
-    useValidation(2);
+    useValidation();
 
   const handleChange = e => {
     handleInputChange(e);

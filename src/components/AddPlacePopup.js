@@ -19,7 +19,7 @@ function AddPlacePopup({ isOpen, isLoading, onClose, onAddPlace }) {
     isInputsValid,
     handleValidityChange,
     resetValidation,
-  } = useValidation(2);
+  } = useValidation();
 
   useEffect(() => {
     if (isOpen) {

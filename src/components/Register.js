@@ -8,8 +8,7 @@ function Register({ onSignup, isLoading }) {
     password: "",
   });
 
-  const { errorMessages, isFormValid, isInputsValid, handleValidityChange } =
-    useValidation(2);
+  const { errorMessages, isFormValid, isInputsValid, handleValidityChange } = useValidation();
 
   const handleChange = e => {
     handleInputChange(e);
