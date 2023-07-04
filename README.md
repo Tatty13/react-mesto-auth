@@ -11,19 +11,12 @@ The file structure is organized according to the BEM nested scheme.
 The page markup is implemented using semantic tags.
 Flexbox and grid layouts are used to align elements. Adaptive layout is implemented.
 
-## **Features**
+## **Functionality**
 
-1. User profile popup  
-*When you click on the "edit" button next to the profile name, a popup opens with a form through which you can change the name and description of the user's activity. You can save the changes by clicking on the "Save" button (or press "Enter" on your keyboard). Close the popup by clicking on the cross/overlay/Escape or by saving the changes.*
-2. Cards with place photos  
-*Clicking the "plus" button opens a popup with a form for adding a new card. You can save the changes by clicking on the "Save" button (or press "Enter" on your keyboard). Close the popup by clicking the cross/overlay/scape button or by saving the changes. The card is added to the beginning.*
-3. Cards deletion  
-*When you click on the button with the basket image, the card is deleted.*
-4. Like button  
-*When you click on the 'like' button, the heart changes color.*
-5. Popup with full place photo
-*Clicking on the picture opens a popup with the same image in a larger format with the original proportions. The name of the place is displayed in full. Close the popup by clicking on the cross/overlay/Escape.*
-6. Forms validation
+* 👤 Authorization and registration of users 
+* ✏️ User data editing 
+* 🖼️ Operations with cards (add, like, delete, full view) 
+* ☑️ Forms validation 
 
 ## **Stack**
 
@@ -68,15 +61,7 @@ Flexbox and grid layouts are used to align elements. Adaptive layout is implemen
 
 ## **Функциональность**
 
-1. Попап профиля  
-*При нажатии на кнопку "редактировать" рядом с именем профиля открывается попап с формой, через которую можно изменить имя и описание деятельности пользователя. Сохранение изменений происходит при нажатии на кнопку "Сохранить". Закрытие попапа осуществляется при клике на крестик/оверлей/Escape, либо при сохранении изменений.*
-2. Карточки с фотографиями мест  
-*При нажатии на кнопку с плюсом открывается попап с формой добавления новой карточки. Сохранение изменений происходит при нажатии на кнопку "Сохранить". Закрытие попапа осуществляется при клике на крестик/оверлей/Escape, либо при сохранении изменений. Карточка добавляется в начало.*
-3. Удаление карточек  
-*При клике по кнопке с изображением корзины карточка удаляется.*
-4. Лайк  
-*При клике на кнопку 'лайк' сердечко меняет цвет.*
-5. Открытие попапа с картинкой  
-*При нажатии на картинку открывается попап с тем же изображением в большем формате с оригинальными пропорциями. Название места отображается полностью. Закрытие попапа осуществляется при клике на крестик/оверлей/Escape.*
-6. Валидация форм  
-*Формы в попапе профиля и попапе добавления карточки с форографией валидируются.*
+* 👤 Авторизация и регистрация пользователей 
+* ✏️ Редактирование данных пользователя
+* 🖼️ Операции с карточками (добавление, лайки, удаление, полномасштабный просмотр)
+* ☑️ Валидация форм 
